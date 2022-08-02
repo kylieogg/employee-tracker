@@ -1,6 +1,6 @@
 const mysql = require('mysql2');
 
-const db = mysql.createConnection({
+const connection = mysql.createConnection({
     host: 'localhost',
     //Your MySQL username,
     user: 'root',
@@ -9,4 +9,8 @@ const db = mysql.createConnection({
     database: 'employees'
 });
 
-module.exports = db;
+connection.connect(function (err) {
+    if (err) throw err;
+  });
+
+module.exports = connection;
